@@ -19,7 +19,7 @@ vertical resolution.
 
 |Sensor|Channels|Spectral Coverage|Spectral Resolution|Spatial Resolution|
 |---|---|---|---|---|
-|Metop-A IASI|8461|3.62~15.5 $\mathrm{\mu m}$|0.25 $\mathrm{cm^{-1}}$|25 $\mathrm{km}$|
+|Metop-A IASI|8461|3.62~15.5 $$\mathrm{\mu m}$$|0.25 $\mathrm{cm^{-1}}$|25 $\mathrm{km}$|
 |MTG IRS|1738|LW 700~1210 $\mathrm{cm^{-1}}$<br>MW 1600~2175 $\mathrm{cm^{-1}}$|0.625 $\mathrm{cm^{-1}}$|4 $\mathrm{km}$|
 
 The inverse problem (hyperspectral measurements to atmospheric state) is a complex nonlinear physical process: this is not trivial.
