@@ -2,12 +2,11 @@
 layout: default
 title: Home
 nav_order: 1
-description: "description"
 permalink: /
 ---
 
-# Welcome to Grassian's github
+# Welcome to Grassian's GitHub Blog!
 
-description
+This GitHub blog shows my research notes and history.
 
-## Getting Started
+

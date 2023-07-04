@@ -2,7 +2,7 @@
 layout: default
 title: Radiation
 nav_order: 2
-permalink: /docs/02_Radiation
+permalink: /docs/radiation
 ---
 
 # Atmospheric Radiation

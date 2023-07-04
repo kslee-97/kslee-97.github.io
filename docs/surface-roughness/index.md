@@ -3,7 +3,7 @@ layout: default
 title: Surface Roughness
 nav_order: 3
 has_children: true
-permalink: /docs/03_Roughness
+permalink: /docs/surface-oughness
 ---
 
 # Surface Roughness Theory
