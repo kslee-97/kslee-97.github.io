@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Surface Roughness
+title: Two-Scale Roughness
 parent: 03_Roughness
 nav_order: 1
 ---
 
-# Surface Roughness Theory
+# Two-Scale Roughness Theory
 
 ## Getting Started
