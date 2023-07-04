@@ -1,8 +1,8 @@
 remote_theme: just-the-docs/just-the-docs
 
 # Site settings
-title: Research Log of Grassian
-description: Research Log of Grassian
+title: Research Note of Grassian
+description: Grassian Lee
 baseurl: "/"
 url: "https://kslee-97.github.io"
 
