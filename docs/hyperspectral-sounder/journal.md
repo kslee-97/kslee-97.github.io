@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: mathjax
 title: Journal Reviews
 parent: Hyperspectral Sounder
 nav_order: 1
