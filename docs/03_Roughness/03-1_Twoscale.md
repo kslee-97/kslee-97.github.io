@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Two-Scale Roughness
-parent: 03_Roughness
+parent: Surface Roughness
 nav_order: 1
 ---
 
