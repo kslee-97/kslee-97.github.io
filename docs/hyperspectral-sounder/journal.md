@@ -37,12 +37,23 @@ a much lower computational cost.
 
 ### Methodology
 
+Input : Channel informations (max. 100 features/eigenvalues)  
+Output : 270 dimension state vector (90 each for T, Q, O3)
+
+Four steps to estimate atmospheric profiles:
+
+1. Feature Selection : both physical and statistical noise characteristics
+   1. "Aires" : Radiative impact of different atmospheric parameters
+   2. "Collard" : Potential 300 channels - avoid redundancy and effects of interfering atmospheric species, and provide robustness against the choice of background error and atmospheric state.
+   3. "Calbet" : Minimize measurement errors - applying noise bias-covariance criteria
+
+2. Feature Extraction : dimensionality reduction through PCA (EOF) and PLS
+
+3. Linear/Nonlinear Regression
+
+4. Linear Model Combination : mean square error sense
 
 
-This paper... introduces
-
-- One
-- Two
 
 And  
 New line 
