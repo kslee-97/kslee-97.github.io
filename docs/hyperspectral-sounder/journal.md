@@ -8,7 +8,7 @@ permalink: /docs/hyperspectral-sounder/journal
 
 # Journal Reviews
 
-## G. Camps-Valls et al, 2012, IEEE TGRS
+## G. Camps-Valls et al., 2012, IEEE TGRS
 
 ### Introduction
 
@@ -25,11 +25,7 @@ vertical resolution.
 The inverse problem (hyperspectral measurements to atmospheric state) is a complex nonlinear physical process: this is not trivial.
 
  - Physical based method
-   - Optimal estimation based : accurate
-   - Numerical instability, large computational cost
- - Statistical regression method
-   - Linear regression using PC : fail to reproduce nonlinear dependencies, only used to provide the first-guess.
-   - Nonlinear algorithm : scheme formed by 4 chained blocks
+ - Statistical regression method (Linear / Nonlinear)
 
 The proposed nonlinear regression method achieves
 similar (and sometimes better accuracies and bias scores) with
@@ -42,29 +38,40 @@ Output : 270 dimension state vector (90 each for T, Q, O3)
 
 Four steps to estimate atmospheric profiles:
 
-1. Feature Selection : both physical and statistical noise characteristics
-   1. "Aires" : Radiative impact of different atmospheric parameters
-   2. "Collard" : Potential 300 channels - avoid redundancy and effects of interfering atmospheric species, and provide robustness against the choice of background error and atmospheric state.
-   3. "Calbet" : Minimize measurement errors - applying noise bias-covariance criteria
+1. Feature Selection : Select the most informative channels
 
-2. Feature Extraction : dimensionality reduction through PCA (EOF) and PLS
+    1. "Aires" : Radiative impact of different atmospheric parameters  
+        Refer to Aires et al., 2002, Section 6a.
 
-3. Linear/Nonlinear Regression
+    2. "Collard" : Potential 300 channels  
+        To avoid redundancy and effects of interfering atmospheric species, and provide robustness against the choice of background error and atmospheric state.
+
+    3. "Calbet" : Minimize measurement errors - applying noise bias-covariance criteria
+
+2. Feature Extraction : dimensionality reduction through PCA (EOF) and PLS  
+    To find optimal number of components for nonlinear regression.
+
+3. Linear / Nonlinear Regression
+
+    1. Neural Network (NN) : Structure of neurons (LR) with connection links (weights) and nonlinear function *f*  
+
+    2. Cascade NN : NN with additional layers
+
+    3. Kernel Ridge Regression (KRR) : Mapping spectra $$\mathrm{x}$$ to $$\phi ({\mathrm{x}})$$ of very high dimensionality. Then the model becomes  
+        $$Y=\Phi W+b$$
+        Minimize the regularized squared loss function :  
+        $$L = ||Y-\Phi W||^2 + \lambda ||W||^2$$  
+        But the calculation of $$\Phi\Phi^T$$ is computationally expensive, we simply use **Kernel matrix** which is $$K = \Phi\Phi^T$$. The selection of kernel function has the same effect with the selection of mapping to high dimensionality and calculation of inner product.  
+        Some typical examples of kernel function : Linear, Polynomial, **RBF (Radial basis function)**, ...  
+        We need to tune some free parameters (hyperparameters).  
+        Fast training, heavy testing. (Inverting the kernel is computationally demanding)
 
 4. Linear Model Combination : mean square error sense
 
 
 
-And  
-New line 
-This don't make new line  
-This makes new line
 
-This becomes another paragraph
-
-### The other topic
-
-
+---
 
 ## W. Blackwell, 2005, IEEE TGRS
 
