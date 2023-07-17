@@ -58,7 +58,7 @@ Four steps to estimate atmospheric profiles:
     2. Cascade NN : NN with additional layers
 
     3. Kernel Ridge Regression (KRR) : Mapping spectra $$\mathrm{x}$$ to $$\phi ({\mathrm{x}})$$ of very high dimensionality. Then the model becomes  
-        $$Y=\Phi W+b$$
+        $$Y=\Phi W+b$$  
         Minimize the regularized squared loss function :  
         $$L = ||Y-\Phi W||^2 + \lambda ||W||^2$$  
         But the calculation of $$\Phi\Phi^T$$ is computationally expensive, we simply use **Kernel matrix** which is $$K = \Phi\Phi^T$$. The selection of kernel function has the same effect with the selection of mapping to high dimensionality and calculation of inner product.  
@@ -66,8 +66,37 @@ Four steps to estimate atmospheric profiles:
         We need to tune some free parameters (hyperparameters).  
         Fast training, heavy testing. (Inverting the kernel is computationally demanding)
 
-4. Linear Model Combination : mean square error sense
+4. Linear Model Combination : usually reduces bias, but computational cost increases.
 
+    1. Mean combination : the average over predictions
+
+    2. Unconstrained optimal linear combination (UOLC) : optimize weight by MSE
+
+    3. Constrained optimal linear combination (COLC) : UOLC with sum-to-one constraints
+
+### Results
+
+#### Synthetic Data Sets
+
+MetOp-IASI and MTG-IRS TOA radiance of each FOVs calculated from ECMWF atmospheric profiles by OSS IR radiative transfer.
+
+* Feature Selection & Extraction  
+RMSE decreases with increasing number of features.  
+Best method for retrieving T/Q: PCA(Calbet)+KRR, O3: PCA(Collard)+KRR  
+Nonlinear regressions are better; KRR needs less features than LR (40~50)
+
+* Accuracy and Bias  
+All nonlinear models show similar results and outperform LR.  
+KRR shows slightly better results (especially in Q), and MTG-IRS data gives better results.  
+
+#### Real Data Sets
+
+Similar with synthetic data sets: nonlinear models outperform; NN and KRR perform similarly.  
+The OLC method shows lower error and bias, but computational cost is high.
+
+
+
+### Conclusions
 
 
 
