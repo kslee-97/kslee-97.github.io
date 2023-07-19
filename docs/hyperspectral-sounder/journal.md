@@ -40,13 +40,31 @@ Four steps to estimate atmospheric profiles:
 
 1. Feature Selection : Select the most informative channels
 
-    1. "Aires" : Radiative impact of different atmospheric parameters  
-        Refer to Aires et al., 2002, Section 6a.
+    1. "Aires" : Radiative impact of different atmospheric parameters **[Aires et al., 2002]**  
+        Dimension problem cause some problems: dimension reduction is needed to choose the most relevant information from the initial data.  
+        Two methods are available: feature extranction, feature selection  
+        Feature selection: select channels that is sensitive to the given atmospheric parameter. (by RTE Jacobians)  
+        Channels that are sensitive to only one constant-concentration gas (CO2, NO2) - 645~800, 2100~2500 inverse cm region.  
+        * Jacobian: derivatives of the transmittances with respect to each geophysical parameter  
 
-    2. "Collard" : Potential 300 channels  
-        To avoid redundancy and effects of interfering atmospheric species, and provide robustness against the choice of background error and atmospheric state.
+        First step: Channels that satisfy some quality criteria  
+        1. Half-width-half-maximum of Jacobian has to be smaller than the threshold (vertically localized)  
+        2. Jacobian center is near the surface  
+        3. Jacobian has a single peak  
+        
+        Second step: vertically uniform subset of channels  
+        9 Channels for each of 30 layers (for 645~800 region)  
+        (2100~2500 region) lower atmos Jacobian is narrower, less affected by water vapor, but large noise (at higher layers). - Lower atmospheric channels (2140~2240 region) were used.  
 
-    3. "Calbet" : Minimize measurement errors - applying noise bias-covariance criteria
+    2. "Collard" : Potential 300 channels  **[Collard, 2007]**  
+        To avoid redundancy and effects of interfering atmospheric species, and provide robustness against the choice of background error and atmospheric state.  
+
+        1. Pre-screening: *ad hoc* criteria, to avoid large uncertainty. (e.g. channels dominated by trace species)  
+        2. Selection: evaluating the impact of the addition of single channels on a figure of merit (degrees of freedom for the signal, or entropy reduction) - first done only on temperature, and then extend to water vapor and trace gases  
+        3. Addition: manually add channels that are useful in the determination of cloud or surface emissivity  
+        
+    3. "Calbet" : Minimize measurement errors - applying noise bias-covariance criteria  
+        This method doesn't seem to be proposed by Calbet, but the idea of the **"estimated noise"** (Observed - Model) comes from **[Calbet et al., 2006]**.
 
 2. Feature Extraction : dimensionality reduction through PCA (EOF) and PLS  
     To find optimal number of components for nonlinear regression.

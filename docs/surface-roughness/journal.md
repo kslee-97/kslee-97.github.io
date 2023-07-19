@@ -3,7 +3,7 @@ layout: mathjax
 title: Journal Reviews
 parent: Surface Roughness
 nav_order: 1
-permalink: /docs/surface-roughness
+permalink: /docs/surface-roughness/journal
 ---
 
 # Journal Reviews
