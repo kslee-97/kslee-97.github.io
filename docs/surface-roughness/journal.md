@@ -86,12 +86,14 @@ Calibration parameters cannot be measured accurately to obtain the required prec
 
 #### Isotropic Emissivity Signal
 
-1. Dependency on **Wind**: In general, $$\Delta E_W$$ increases as the wind speed increases (up to 40 m/s), and this relationship is fitted to a fifth-order polynomial with binned analysis (0.5 m/s size).
+1. Dependency on **Wind**:  
+    In general, $$\Delta E_W$$ increases as the wind speed increases (up to 40 m/s), and this relationship is fitted to a fifth-order polynomial with binned analysis (0.5 m/s size).  
     $$\Delta E_W^i (W,T_{ref}) = \delta^i (W) = \sum_{k=1}^5 \delta_k^i \cdot W^k$$
 
-2. Dependency on **Sea Surface Temperature**: $$\Delta E_W$$ is slightly larger in cold water. Since the dependence of $$\Delta E_W$$ on $$T_S$$ resembles the dependence of $$E_0$$ on $$T_S$$, this dependency can be modeled by the below equation.
-    $$\Delta E_W^i (W,T_S,S) = \delta^i (W) \cdot \frac{E_0^i (T_S,S)}{E_0^i (T_{ref},S)}$$
-    This parameterization seems adequate, and eliminates one degree of freedom in the fitting.
+2. Dependency on **Sea Surface Temperature**:  
+    $$\Delta E_W$$ is slightly larger in cold water. Since the dependence of $$\Delta E_W$$ on $$T_S$$ resembles the dependence of $$E_0$$ on $$T_S$$, this dependency can be modeled by the below equation.  
+    $$\Delta E_W^i (W,T_S,S) = \delta^i (W) \cdot \frac{E_0^i (T_S,S)}{E_0^i (T_{ref},S)}$$  
+    This parameterization seems adequate, and eliminates one degree of freedom in the fitting.  
 
 3. Dependency on **Earth Incidence Angle**:
 
