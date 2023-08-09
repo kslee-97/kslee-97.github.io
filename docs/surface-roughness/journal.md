@@ -88,18 +88,22 @@ Calibration parameters cannot be measured accurately to obtain the required prec
 
 1. Dependency on **Wind**:  
     In general, $$\Delta E_W$$ increases as the wind speed increases (up to 40 m/s), and this relationship is fitted to a fifth-order polynomial with binned analysis (0.5 m/s size).  
-    $$\Delta E_W^i (W,T_{ref}) = \delta^i (W) = \sum_{k=1}^5 \delta_k^i \cdot W^k$$
+    $$\Delta E_W^i (W,T_{ref}) = \delta^i (W) = \sum_{k=1}^5 \delta_k^i \cdot W^k$$  
 
 2. Dependency on **Sea Surface Temperature**:  
-    $$\Delta E_W$$ is slightly larger in cold water. Since the dependence of $$\Delta E_W$$ on $$T_S$$ resembles the dependence of $$E_0$$ on $$T_S$$, this dependency can be modeled by the below equation.  
+    Emissivity $$\Delta E_W$$ is slightly larger in cold water. Since the dependence of $$\Delta E_W$$ on $$T_S$$ resembles the dependence of $$E_0$$ on $$T_S$$, this dependency can be modeled by the below equation.  
     $$\Delta E_W^i (W,T_S,S) = \delta^i (W) \cdot \frac{E_0^i (T_S,S)}{E_0^i (T_{ref},S)}$$  
     This parameterization seems adequate, and eliminates one degree of freedom in the fitting.  
 
-3. Dependency on **Earth Incidence Angle**:
+3. Dependency on **Earth Incidence Angle**:  
+    H-pol emissivity $$\Delta E_W^h$$ weakly increases, and V-pol emissivity $$\Delta E_W^v$$ decreases with increasing EIA. $$\Delta E_W^{nad}$$ comes from $$\Delta E_W^h$$ and $$\Delta E_W^v$$ around 55 degree, the EIA dependence can be parameterized.  
+    $$\Delta E_W^{p,f} (\theta_i, W, T_S, S) = \Delta E_W^{nad, f} (W, T_S, S) + \left[\Delta E_W^{p,f} (\theta_{ref}, W, T_S, S) - \Delta E_W^{nad, f} (W, T_S, S)\right] \cdot \left(\frac{\theta_i}{\theta_{ref}}\right)^{x_p}$$  
+    $$\Delta E_W^{nad,f} (W, T_S, S) = \frac{1}{2} \left[\Delta E_W^{v,f}(\theta_{ref}, W, T_S, S) + \Delta E_W^{h,f} (\theta_{ref}, W, T_S, S)\right]$$  
+    This fits well with other dataset between 25~70 degree.  
 
-4. Dependency on **Frequency**:
-
-
+4. Dependency on **Frequency**:  
+    H-pol emissivity increases linearly with $$\mathrm{log}(f)$$.  
+    V-pol emissivity is almost independent with frequency between 6.8 and 24 GHz, and decreases with increasing frequency (becomes negative at low wind).  
 
 #### Downwelling Scattered Atmospheric Radiation
 
