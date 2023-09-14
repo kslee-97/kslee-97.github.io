@@ -107,9 +107,36 @@ Calibration parameters cannot be measured accurately to obtain the required prec
 
 #### Downwelling Scattered Atmospheric Radiation
 
-#### Wind Directional Signal
+The radiation coming from the ocean surface contains the scattered downwelling sky radiation. Radiations that come from different directions have travelled different atmospheric path length; the correction is done by adding the atmospheric path length correction term $$\tau \cdot T_{B,scat}$$.  
+$$T_{B,scat,p} = \Omega_p (\tau, W) \cdot \left[T_{BD}+\tau\cdot T_{cold}-T_{cold}\right]\cdot R$$  
+The values of $$\Omega_p$$ are precomputed using GO model, and the slope distribution variance comes from Cox and Munk (1954).  
+The size of $$\Omega_p$$ depends on frequency and $$\tau$$. For low frequency channels, $$\tau$$ is almost 1; for high frequency channels, $$\tau$$ becomes considerablly low. The path length correction increases brightness temperature for H-pols and the effect increases with increasing frequency; the correction stays small for V-pols.  
+If the path length correction is neglected, the wind-induced emissivity becomes effective emissivity: this approach might be valid if the range of $$\tau$$ is narrow.
+
+#### Wind Directional Signal (Stokes Parameters)
+
+Model function of $$\Delta E_\varphi$$ : four Stokes parameters  
+V-pol and H-pol: even function in $$\varphi$$  
+Third and Fourth Stokes parameter: odd function in $$\varphi$$  
+Errors increase for higher frequencies because of the errors in atmospheric transmittance, and errors in h-pol signal is twice as large as errors in v-pol.  
+Dominant coef: 1st harmonic v-pol, 2nd harmonic h-pol  
 
 #### Validation & Error Assessment
+
+Two methods to assess the accuracy of the emissivity model function:  
+1. Analyze the difference between measured / RTM-computed TOA TB as a function of ground truth parameters.  
+2. Direct comparison of the geophysical parameters derived by a physical algorithm based on the model.  
+
+Three limitations: (1) quality of the ground truth, (2) only provides overall assessment of the channels, (3) error in the atmospheric absorption model or systematic error in water vapor/cloud water.  
+
+The result shows almost excellent match except in low SST regions. Five possible reasons:  
+1. WV/LCW retrieved by the radiometer is too high.  
+2. WV continuum absorption in RTM functino is too high.  
+3. The assumption that the temperature dependence of $$\Delta E_W$$ resembles that of $$E_0$$ is not valid.  
+4. Observed deficiency in high wind speeds caused inaccuracy in the atmospheric path length correction.  
+5. The assumption that $$\Delta E_W$$ goes to zero with wind speed is not valid.  
+
+Some other differences: fifth-order polynomial fit may not fully explain the behavior.  
 
 #### High Wind Speed Area
 
